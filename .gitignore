@@ -1,0 +1,13 @@
+/.idea/
+/.vscode/
+**/__pycache__/
+report.xml
+.coverage
+*.egg*
+dist
+build
+wheelhouse
+test_project
+/venv/
+
+*.npy

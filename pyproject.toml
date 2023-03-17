@@ -1,0 +1,74 @@
+[project]
+name = "PACKAGE_NAME"
+dynamic = ["version", "readme"]
+authors = [
+    {name = "Anton Lu", email = "anton.lu@cern.ch"}
+]
+description = "PACKAGE_DESCRIPTION"
+license = {name = "GPLv3", file = "LICENSE.txt"}
+
+classifiers = [
+    'Development Status :: 3 - Alpha',
+    "Environment :: Console",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Topic :: Software Development",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+requires-python = ">=3.9"
+dependencies = [
+    "dataclasses"
+]
+
+[tool.setuptools]
+packages = ["PACKAGE"]
+
+[tool.setuptools.dynamic]
+readme = {file = ["README.md"], content-type = "text/markdown"}
+version = { attr = "setuptools_scm.get_version" }
+
+[project.optional-dependencies]
+test = [
+    "flake8",
+    "pylint",
+    "pytest-cov"
+]
+dev = [
+    "black",
+    "pre-commit",
+    "isort",
+]
+
+[build-system]
+requires = [
+    "setuptools>=62",
+    "setuptools-scm[toml]>=6.2",
+    "wheel"
+]
+build-backend = "setuptools.build_meta"
+
+[tool.black]
+target-version = ['py39', 'py310']
+line-length = 79
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 79
